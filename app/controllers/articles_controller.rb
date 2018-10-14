@@ -1,9 +1,10 @@
 class ArticlesController < ApplicationController
   def index
-    articles = Article.all
+    articles = Article.recent.page params[:page]
     render json: articles
   end
 
   def show
+    render json: Article.find(params[:id])
   end
 end
